@@ -1,9 +1,8 @@
 class Solution(object):
     def twoSum(self, nums, target):
-    
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i, j]
-
-
+        seen = {}
+        for i, x in enumerate(nums):
+            complement = target - x              # target minus current number
+            if complement in seen:               # is the partner already in the notebook?
+                return [seen[complement], i]           # partner's index, then current
+            seen[x] = i                 # write current down for future
